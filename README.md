@@ -1,98 +1,135 @@
-# DSA-CASE-STUDY-ONE
-## Building a Portfolio for a DSA-Case Study on Amazon Product 
-After the dataset was given, the first thing i did was to structured the dataset by given it a table by (ctrl-T), click ok.
-Then Column B was clean by using this formular =TRIM(LEFT(B2, FIND(" ",B2, FIND(" ",B2, FIND(" ",B2)+1)+1))) on a new Column C and titled Product_Name2, then 
-double clicking the right-corner-down to effect the formular on the Column C. The Category Column was cleared to on new Column E and named Top Category with this formular =LEFT(D2, FIND("|", D2 & "|") - 1) and double click the down corner to effect the command on that column. Click any where of the dataset and go to Insert at the Ribbon, then click on the PivotTable, it will open a default dialogue box, click ok and it will open a fresh sheet with a pivot interface. 
+ # DSA CASE STUDY ONE: Building an Amazon Product Analysis Portfolio
+As part of my data analytics journey, I was tasked with analyzing an Amazon product dataset for a Data Structures & Algorithms (DSA) case study. The goal was to transform raw e-commerce data into actionable insights using Excel. Here's the story of how I approached and completed the task step-by-step:
 
-Question 1. What is the average discount percentage by product category? 
-	In the PivotTable Fields panel:
-o	Drag Top Category into the Rows area.
-o	Drag Discount_Percentage into the Values area. Then right click it move the cursor to summarize value by, then average and click.
-o	Home on the Ribbon Tab, click on the % sign after highlighting the Average Discount_Percentage
+### Step 1: Data Preparation & Cleaning
+The first step in any analysis is preparing the data. I began by formatting the raw dataset into a structured Excel table using Ctrl + T, which made sorting and filtering much easier.
 
-2. How many products are listed under each category?
-	In the PivotTable Fields panel:
-o	Drag Top Category into the Rows area.
-o	Drag Product ID into the Values area. Then right click it move the cursor to summarize value by, then count and click.
+### Cleaning the Product Name
+To simplify product names, I created a new column Product_Name2 using this formula:
+=TRIM(LEFT(B2, FIND(" ",B2, FIND(" ",B2, FIND(" ",B2)+1)+1)))
+Then, I double-clicked the fill handle to apply the formula to the entire column.
 
-3. What is the total number of reviews per category?
- o  	Creat a new column by the Review_ID
- o	Enter this formular=IF(P2="",0,LEN(O2)-LEN(SUBSTITUTE(O2,",",""))+1)
- o	Name it Review_Count
- o	Go to the PivotTable Tool on the Ribbon → Analyze → Refresh
-	In the PivotTable Fields panel:
-o	Drag Top Category into the Rows area.
-o	Drag Review_Count into the Values area. It should be on sum.
+### Extracting the Top Category
+For categorization, I cleaned the Category column by extracting only the top-level category. This was done in a new column titled Top Category using:
 
-4. Which products have the highest average ratings?
-   	In the PivotTable Fields panel:
-o	Drag Top Category into the Rows area.
-o	Drag Rating into the Values area. It should be on sum.
-o	Right click and go to sort, then sort by highest to smallest
+excel
+Copy
+Edit
+=LEFT(D2, FIND("|", D2 & "|") - 1)
 
-5. What is the average actual price vs the discounted price by category?
-   	In the PivotTable Fields panel:
-o	Drag Top Category into the Rows area.
-o	Drag both Actual Price and Discounted Price to the Values area.
-o	Ensure both are on Average
- 
-6. Which products have the highest number of reviews?
-    In the PivotTable Fields panel:
-o	Drag Top Category into the Rows area.
-o	Drag Review_Count into the Values area. It should be on sum.
-o	Right click and go to sort, then sort by highest to smallest
+### Step 2: Pivot Table Analysis
+With the dataset clean, I moved on to creating a Pivot Table from the Insert > PivotTable option, which opened a new worksheet with a blank pivot interface. From here, I carried out multiple analyses:
 
-7. How many products have a discount of 50% or more?
-    In the PivotTable Fields panel:
-o	Drag Top Category into the Rows area.
-o	Drag Discount_Percentage into the Values area. Then right click it move the cursor to summarize value by, then sum and click.
-o	Home on the Ribbon Tab, click on the % sign after highlighting the Sum Discount_Percentage
- 
-8. What is the distribution of product ratings (e.g., how many products are rated 3.0, 4.0, etc.)?
-	In the Pivot Table Fields:
-o	Drag Rating  into Rows.
-o	Drag product_name into Values. Set it to Count.
+1. Average Discount Percentage by Category
+Rows: Top Category
 
-9. What is the total potential revenue (actual_price × rating_count) by category?
-o	Add a new column to the data and name Potential Revenue.
-o	Enter this formular =actual_price_cell * rating_count_cell
-   	In Pivot Table Fields:
-o	Drag Top Category to Rows.
-o	Drag Potential Revenue to Values.
-o	Ensure it shows Sum.
-o	Highlight Potential Revenue Values and press Ctrl 1 on Keyboard and go to custotm and enter #,###.00,,"M", click ok.
- 
-10. What is the number of unique products per price range bucket (e.g., <₹200, ₹200–₹500, >₹500)?
-o	Add a new column called Price Bucket.
-o	In the first row, enter this formula =IF(F2<200, "<₹200", IF(F2<=500, "₹200–₹500", ">₹500"))
-o	Drag the formula down to apply to all rows
-	In Pivot Table Fields:
-o	Drag Price Bucket into Rows.
-o	Drag Top Category into Values. Make sure the value field is set to Count 
+Values: Discount_Percentage (set to Average)
 
-11. How does the rating relate to the level of discount?
-    In the Pivot Table Fields:
-o	Drag Rating into Rows.
-o	Drag Discount_Percentage into Values. Set it to sum.
+Format: Apply percentage format
 
-12. How many products have fewer than 1,000 reviews?
-In the Pivot Table Fields:
-o	Drag Review_Count into Rows.
-o	Drag Review_ID and Rating_Count into Values. Set it to count and sum respectively.
-    
-13. Which categories have products with the highest discounts?
-Inside the Pivot Table:
-o	Drag category to the Rows area.
-o	Drag your Discount_Percentage column to the Values area.
-o	Set the value to Max (Right-click → Summarize Values By → Max). This will show the maximum discount available in each category.
+2. Number of Products per Category
+Rows: Top Category
 
-14. Identify the top 5 products in terms of rating and number of reviews combined.
-In the Pivot Table Fields:
-o	Drag Top Category into Rows.
-o	Drag Review_Count and Rating_Count into Values. set both at sum.
-o	Click on the dropdown by the Row Label and navigate to Value filters → top 10 → change to top 5 → ok
+Values: Product ID (set to Count)
 
-Finally a dashboard was created for the work and controlled by a slicer Tool.
-below are the graphical representation of the above
+3. Total Reviews per Category
+Created a new column Review_Count using:
+
+excel
+Copy
+Edit
+=IF(P2="",0,LEN(O2)-LEN(SUBSTITUTE(O2,",",""))+1)
+Refreshed Pivot Table
+
+Rows: Top Category
+
+Values: Review_Count (set to Sum)
+
+4. Products with Highest Average Ratings
+Rows: Top Category
+
+Values: Rating (set to Average)
+
+Sorted by highest ratings
+
+5. Average Actual vs Discounted Price
+Rows: Top Category
+
+Values: Actual Price, Discounted Price (both set to Average)
+
+6. Products with the Most Reviews
+Rows: Top Category
+
+Values: Review_Count (set to Sum)
+
+Sorted by highest values
+
+7. Products with Discounts ≥ 50%
+Rows: Top Category
+
+Values: Discount_Percentage (set to Sum)
+
+Filtered or interpreted based on % totals
+
+8. Distribution of Product Ratings
+Rows: Rating
+
+Values: Product_Name (set to Count)
+
+9. Total Potential Revenue by Category
+New column Potential Revenue:
+
+excel
+Copy
+Edit
+=Actual_Price_Cell * Rating_Count_Cell
+Pivot Table:
+
+Rows: Top Category
+
+Values: Potential Revenue (set to Sum)
+
+Format as: #,###.00,, "M"
+
+10. Unique Products per Price Range
+New column Price Bucket:
+
+excel
+Copy
+Edit
+=IF(F2<200, "<₹200", IF(F2<=500, "₹200–₹500", ">₹500"))
+Rows: Price Bucket
+
+Values: Top Category (set to Count)
+
+11. Relation Between Rating and Discount
+Rows: Rating
+
+Values: Discount_Percentage (set to Sum)
+
+12. Products with Fewer Than 1,000 Reviews
+Rows: Review_Count
+
+Values: Review_ID and Rating_Count (set to Count and Sum)
+
+13. Categories with Highest Discounts
+Rows: Category
+
+Values: Discount_Percentage (set to Max)
+
+14. Top 5 Products by Rating + Reviews
+Rows: Top Category
+
+Values: Review_Count and Rating_Count (set to Sum)
+
+Filter: Value Filters > Top 10 > change to Top 5
+
+### Step 3: Dashboard & Visualization
+To present the findings, I designed an interactive dashboard. Key charts and metrics were linked to Slicer Tools, allowing users to filter by categories, price ranges, or ratings. This enabled quick comparisons and dynamic insights.
+
+
+
+### Conclusion
+This DSA case study helped me apply foundational data analysis techniques using Excel. From data cleaning to advanced pivot table operations and dashboard design, I learned how to extract meaningful business insights from e-commerce datasets. It was not just a technical exercise—but a real-world simulation of how data drives strategic decisions.
+
 ![image](https://github.com/user-attachments/assets/e89bbcd3-0c78-4521-8412-a52b2e644c30)
-
