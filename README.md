@@ -62,10 +62,22 @@ o	Drag Potential Revenue to Values.
 o	Ensure it shows Sum.
 o	Highlight Potential Revenue Values and press Ctrl 1 on Keyboard and go to custotm and enter #,###.00,,"M", click ok.
  
-11. What is the number of unique products per price range bucket (e.g., <₹200, ₹200–₹500, >₹500)?
+10. What is the number of unique products per price range bucket (e.g., <₹200, ₹200–₹500, >₹500)?
+o	Add a new column called Price Bucket.
+o	In the first row, enter this formula =IF(F2<200, "<₹200", IF(F2<=500, "₹200–₹500", ">₹500"))
+o	Drag the formula down to apply to all rows
+	In Pivot Table Fields:
+o	Drag Price Bucket into Rows.
+o	Drag Top Category into Values. Make sure the value field is set to Count 
+
+11. How does the rating relate to the level of discount?
+    In the Pivot Table Fields:
+o	Drag Rating  into Rows.
+o	Drag Discount_Percentage into Values. Set it to sum.
+
+12. How many products have fewer than 1,000 reviews?
 
     
-19. How does the rating relate to the level of discount? 
-20. How many products have fewer than 1,000 reviews? 
-21. Which categories have products with the highest discounts? 
-22. Identify the top 5 products in terms of rating and number of reviews combined.
+13. Which categories have products with the highest discounts?
+
+14. Identify the top 5 products in terms of rating and number of reviews combined.
