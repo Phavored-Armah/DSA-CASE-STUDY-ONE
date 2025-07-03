@@ -72,11 +72,13 @@ o	Drag Top Category into Values. Make sure the value field is set to Count
 
 11. How does the rating relate to the level of discount?
     In the Pivot Table Fields:
-o	Drag Rating  into Rows.
+o	Drag Rating into Rows.
 o	Drag Discount_Percentage into Values. Set it to sum.
 
 12. How many products have fewer than 1,000 reviews?
-
+In the Pivot Table Fields:
+o	Drag Review_Count into Rows.
+o	Drag Review_ID and Rating_Count into Values. Set it to count and sum respectively.
     
 13. Which categories have products with the highest discounts?
 
