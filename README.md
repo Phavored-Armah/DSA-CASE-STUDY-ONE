@@ -81,5 +81,18 @@ o	Drag Review_Count into Rows.
 o	Drag Review_ID and Rating_Count into Values. Set it to count and sum respectively.
     
 13. Which categories have products with the highest discounts?
+Inside the Pivot Table:
+o	Drag category to the Rows area.
+o	Drag your Discount_Percentage column to the Values area.
+o	Set the value to Max (Right-click → Summarize Values By → Max). This will show the maximum discount available in each category.
 
 14. Identify the top 5 products in terms of rating and number of reviews combined.
+In the Pivot Table Fields:
+o	Drag Top Category into Rows.
+o	Drag Review_Count and Rating_Count into Values. set both at sum.
+o	Click on the dropdown by the Row Label and navigate to Value filters → top 10 → change to top 5 → ok
+
+Finally a dashboard was created for the work and controlled by a slicer Tool.
+below are the graphical representation of the above
+![image](https://github.com/user-attachments/assets/e89bbcd3-0c78-4521-8412-a52b2e644c30)
+
